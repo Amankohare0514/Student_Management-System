@@ -6,8 +6,8 @@ function Add({ employees, setEmployees, setIsAdding }) {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
-    const [salary, setSalary] = useState('');
-    const [date, setDate] = useState('');
+    const [rollNo, setRollNo] = useState('');
+    const [mobile, setMobile] = useState('');
 
     const textInput = useRef(null);
 
@@ -17,7 +17,7 @@ function Add({ employees, setEmployees, setIsAdding }) {
 
     const handleAdd = e => {
         e.preventDefault();
-        if (!firstName || !lastName || !email || !salary || !date) {
+        if (!firstName || !lastName || !email || !rollNo || !mobile) {
             return Swal.fire({
                 icon: 'error',
                 title: 'Error!',
@@ -32,8 +32,8 @@ function Add({ employees, setEmployees, setIsAdding }) {
             firstName,
             lastName,
             email,
-            salary,
-            date
+            rollNo,
+            mobile
         }
         employees.push(newEmployee);
         setEmployees(employees);
@@ -78,21 +78,21 @@ function Add({ employees, setEmployees, setIsAdding }) {
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                 />
-                <label htmlFor="salary">Salary ($)</label>
+                <label htmlFor="salary">Roll.No</label>
                 <input
-                    id="salary"
+                    id="rollNo"
                     type="number"
-                    name="salary"
-                    value={salary}
-                    onChange={e => setSalary(e.target.value)}
+                    name="rollNo"
+                    value={rollNo}
+                    onChange={e => setRollNo(e.target.value)}
                 />
-                <label htmlFor="date">Date</label>
+                <label htmlFor="date">Mobile</label>
                 <input
-                    id="date"
-                    type="date"
-                    name="date"
-                    value={date}
-                    onChange={e => setDate(e.target.value)}
+                    id="mobile"
+                    type="number"
+                    name="mobile"
+                    value={mobile}
+                    onChange={e => setMobile(e.target.value)}
                 />
                 <div style={{ marginTop: '30px' }}>
                     <input type="submit" value="Add" />

@@ -8,13 +8,13 @@ function Edit({ employees, selectedEmployee, setEmployees, setIsEditing }) {
     const [firstName, setFirstName] = useState(selectedEmployee.firstName);
     const [lastName, setLastName] = useState(selectedEmployee.lastName);
     const [email, setEmail] = useState(selectedEmployee.email);
-    const [salary, setSalary] = useState(selectedEmployee.salary);
-    const [date, setDate] = useState(selectedEmployee.date);
+    const [rollNo, setRollNo] = useState(selectedEmployee.salary);
+    const [mobile, setMobile] = useState(selectedEmployee.date);
 
     const handleUpdate = e => {
         e.preventDefault();
 
-        if (!firstName || !lastName || !email || !salary || !date) {
+        if (!firstName || !lastName || !email || !rollNo || !mobile) {
             return Swal.fire({
                 icon: 'error',
                 title: 'Error!',
@@ -28,8 +28,8 @@ function Edit({ employees, selectedEmployee, setEmployees, setIsEditing }) {
             firstName,
             lastName,
             email,
-            salary,
-            date
+            rollNo,
+            mobile
         };
 
         for (let i = 0; i < employees.length; i++) {
@@ -79,21 +79,23 @@ function Edit({ employees, selectedEmployee, setEmployees, setIsEditing }) {
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                 />
-                <label htmlFor="salary">Salary ($)</label>
+                <label htmlFor="salary">Roll.No</label>
                 <input
-                    id="salary"
+                    id="rollNo"
                     type="number"
-                    name="salary"
-                    value={salary}
-                    onChange={e => setSalary(e.target.value)}
+                    name="rollno"
+                    value={rollNo}
+                    onChange={e => setRollNo(e.target.value)}
                 />
-                <label htmlFor="date">Date</label>
+                <label htmlFor="date">Mobile</label>
                 <input
-                    id="date"
-                    type="date"
-                    name="date"
-                    value={date}
-                    onChange={e => setDate(e.target.value)}
+                    id="mobile"
+                    type="tel"
+                    required
+                    name="mobile"
+                    pattern="[0-9]{10}"
+                    value={mobile}
+                    onChange={e => setMobile(e.target.value)}
                 />
                 <div style={{ marginTop: '30px' }}>
                     <input type="submit" value="Update" />
